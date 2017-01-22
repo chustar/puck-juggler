@@ -1,0 +1,5 @@
+{
+    "name": "puck-types",
+    "version": "0.0.2",
+    "types": "./puck.d.ts"
+}

@@ -1,0 +1,10 @@
+{
+  "name": "puck",
+  "version": "0.0.1",
+  "dependencies": {
+    "PuckJS": "file:../puck"
+  },
+  "devDependencies": {
+    "puck-types": "file:///Users/chustar/Development/puckjs/puck-typings"
+  }
+}
