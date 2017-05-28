@@ -9,6 +9,7 @@ var BLUE = 32;
 var MAX_TIMEOUT = 25000;
 var LIGHT_TIMEOUT = 500;
 
+// Puck JS class.
 function puck_firmware() {
     this.state = RESET;
 
@@ -22,6 +23,7 @@ function puck_firmware() {
     this.ledLit[GREEN] = false;
     this.ledLit[BLUE] = false;
 
+    // When clicked, navigate through the functions.
     this.click = function (args) {
         this.reset();
         this.state = this.state == JUGGLE ? RESET : this.state + 1;
@@ -49,10 +51,13 @@ function puck_firmware() {
         }
     };
 
+    // Begin broadcasting IR reading every LIGHT_TIMEOUT.
     this.light = function () {
         this.lightIntervalId = setInterval(this.onLight.bind(this), LIGHT_TIMEOUT);
         this.updateBattery();
     };
+
+    // On each interval update, updfate the service value.
     this.onLight = function () {
         var light = Puck.light();
         if (!this.lightZero) { this.lightZero = light; }
@@ -143,6 +148,7 @@ function maxTimeoutExceededCheck(intervalId, startTime, duration) {
     }
 }
 
+// When initialized, set default services and hook up buttons.
 function onInit() {
     NRF.setServices({
         0xC900: {
@@ -160,9 +166,9 @@ function onInit() {
         }
     });
 
-    var m = new puck_firmware();
+    var p = new puck_firmware();
 
-    setWatch(m.click.bind(m), BTN, {
+    setWatch(p.click.bind(p), BTN, {
         edge: 'rising',
         debounce: 10,
         repeat: true
