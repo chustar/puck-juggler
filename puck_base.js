@@ -158,11 +158,11 @@ function onInit() {
                     digitalWrite([LED3, LED2, LED1], evt.data[0]);
                 }
             },
-            0xC91A: { readable: true, notify: true }, // Zero IR
-            0xC91B: { readable: true, notify: true }, // Current IR
-            0xC92A: { readable: true, notify: true }, // Zero MAG
-            0xC92B: { readable: true, notify: true }, // Current MAG
-            0xC93A: { readable: true, notify: true }, // Current BATT
+            0xC91A: { readable: true, broadcast: true, notify: true }, // Zero IR
+            0xC91B: { readable: true, broadcast: true, notify: true }, // Current IR
+            0xC92A: { readable: true, broadcast: true, notify: true }, // Zero MAG
+            0xC92B: { readable: true, broadcast: true, notify: true }, // Current MAG
+            0xC93A: { readable: true, broadcast: true, notify: true }, // Current BATT
         }
     });
 
